@@ -5,7 +5,7 @@
   "main": "lib/app.js",
   "scripts": {
     "lint": "standard",
-    "test": "mocha",
+    "test": "NODE_ENV=test mocha",
     "dev": "nodemon"
   },
   "engines": {
@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "config": "^1.24.0",
+    "debug": "^2.6.0",
     "koa": "^1.2.4",
     "koa-pino-logger": "^1.1.0",
     "sequelize": "^3.29.0",

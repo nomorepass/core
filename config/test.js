@@ -1,11 +1,10 @@
 'use strict'
 
 module.exports = {
-  port: 4217,
-  name: 'nomorepass',
+  port: 4218,
   sequelize: {
     sqlite: {
-      storage: 'nomorepass.db'
+      storage: 'nomorepass.test.db'
     }
   }
 }
