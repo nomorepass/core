@@ -1,8 +1,10 @@
 'use strict'
 
 const expect = require('chai').expect
-const User = require('../../lib/models/user')
+const User = require('../../lib/models').User
 const UserMocker = require('../mockers/user')
+const Vault = require('../../lib/models').Vault
+const VaultMocker = require('../mockers/vault')
 
 describe('User model', () => {
   describe('definition', () => {
@@ -15,6 +17,33 @@ describe('User model', () => {
         'salt',
         'email'
       ])
+    })
+  })
+
+  describe('getVaults', () => {
+    it('should has getVaults methods', () => {
+      let user = User.build(UserMocker())
+      expect(user.getVaults).instanceof(Function)
+    })
+
+    it('should get valid vaults', function * () {
+      let user = yield User.create(UserMocker())
+      let anotherUser = yield User.create(UserMocker())
+
+      yield Vault.bulkCreate([
+        VaultMocker({
+          userId: user.id
+        }),
+        VaultMocker({
+          userId: user.id
+        }),
+        VaultMocker({
+          userId: anotherUser.id
+        })
+      ])
+
+      let vaults = yield user.getVaults()
+      expect(vaults.length).equal(2)
     })
   })
 
