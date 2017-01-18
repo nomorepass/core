@@ -7,5 +7,8 @@ module.exports = {
     sqlite: {
       storage: 'nomorepass.db'
     }
+  },
+  session: {
+    keys: ['random key']
   }
 }

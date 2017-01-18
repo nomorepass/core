@@ -1,5 +1,7 @@
 'use strict'
 
+const crypto = require('crypto')
+
 let count = 0
 
 module.exports = (options) => {
@@ -7,7 +9,7 @@ module.exports = (options) => {
 
   let user = {
     username: `usernmae${count}`,
-    password: `password${count}`,
+    password: crypto.randomBytes(16).toString('hex'),
     salt: `salt${count}`,
     email: `email${count}@test.com`
   }
