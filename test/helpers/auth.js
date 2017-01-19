@@ -7,7 +7,7 @@ module.exports = function * (app, userInfo) {
 
   yield agent.post('/api/users/login')
     .send({
-      username: userInfo.username,
+      email: userInfo.email,
       password: userInfo.password
     })
     .expect(200)

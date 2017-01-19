@@ -34,7 +34,7 @@ describe('user apis', () => {
       let res = yield request(app)
         .post('/api/users/login')
         .send({
-          username: mocker.username,
+          email: mocker.email,
           password: mocker.password
         })
         .expect(200)
