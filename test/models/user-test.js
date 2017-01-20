@@ -18,6 +18,12 @@ describe('User model', () => {
         'email'
       ])
     })
+
+    it('should not contain fields salt/password', function * () {
+      let user = yield User.create(UserMocker())
+      let json = user.toJSON()
+      expect(json).not.have.keys(['salt', 'password'])
+    })
   })
 
   describe('getVaults', () => {
